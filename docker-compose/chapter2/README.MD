@@ -56,6 +56,20 @@ docker compose build
 docker compose up
 ```
 
+
+---
+
+## Adding scripts into container and run it
+
+If you copy some files (sh scripts or other) into container, and after `docker compose up` on starting corresponding container get an error kinde like:
+`Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: exec: "/redis-populate.sh": permission denied: unknown`
+
+Then add permissions to execute a file on your host machine from where you are copying the file:
+
+```sh
+chmod +x redis-populate.sh
+```
+
 ---
 
 ## Just notes
@@ -69,3 +83,6 @@ docker run --rm -p 8080:8080 --env REDIS_HOST=host.docker.internal:6379 task-man
 docker run --rm -it --network host -p 8080:8080 --env REDIS_HOST=localhost:6379 task-manager:0.1
 
 docker run --rm -p 8080:8080 --env REDIS_HOST=redis:6379 --network=chapter2_default task-manager:0.1
+
+docker images --filter "label=com.host.description.app=task-manager"
+docker ps --filter "label=com.host.description.app=task-manager"
