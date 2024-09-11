@@ -32,7 +32,9 @@ func setupRouter() *gin.Engine {
 	// Health Check
 	r.GET("/ping", func(c *gin.Context) {
 		c.String(http.StatusOK, "pong")
+		//c.String(http.StatusInternalServerError, "pong")
 	})
+
 
 	// Get tasks
 	r.GET("/task", func(c *gin.Context) {

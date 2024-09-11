@@ -44,6 +44,20 @@ docker run --rm -p 8080:8080 --env REDIS_HOST=redis:6379 --network=chapter2_defa
 
 ---
 
+## Compose build and run commands
+
+In compose file for neaded services set the pathes to dockerfile by `build: .` instead of `.` you can set a full path
+if docker not is in same directory with compose file.
+
+Then run commands:
+
+```sh
+docker compose build
+docker compose up
+```
+
+---
+
 ## Just notes
 
 HMSET task:8b171ce0-6f7b-4c22-aa6f-8b110c19f83 id 8b171ce0-6f7b-4c22-aa6f-8b110c19f83 Name "A task" Description "A task that need tove executed at the timestamp specified" Timestamp 1645275972000
