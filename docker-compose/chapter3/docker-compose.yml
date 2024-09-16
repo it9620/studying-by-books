@@ -17,17 +17,24 @@ services:
       timeout: 10s
       retries: 3
       start_period: 5s
+    networks:
+      - task-manager-public-network
+      - redis-network
+    labels:
+      - com.host.description.app=task-manager
     
   redis:
     image: redis
     ports:
       - 6379:6379
     entrypoint: ["redis-server", "/usr/local/etc/redis/redis.conf"]
-    labels:
-      - com.host.description.app=task-manager
     volumes:
       - ./redis.conf:/usr/local/etc/redis/redis.conf
       - redis-data:/data
+    networks:
+      - redis-network
+    labels:
+      - com.host.description.app=task-manager
   
   redis-backup:
     image: bash
@@ -40,11 +47,23 @@ services:
       - ./snapshot-backup.sh:/snapshot-backup.sh
       - redis-data:/data:ro
       - backup:/backup
+    networks:
+      - redis-network
+    labels:
+      - com.host.description.app=task-manager
 
 volumes:
   redis-data:
     labels:
       - com.host.description.app=task-manager  
   backup:
+    labels:
+      - com.host.description.app=task-manager
+
+networks:
+  task-manager-public-network:
+    labels:
+      - com.host.description.app=task-manager
+  redis-network:
     labels:
       - com.host.description.app=task-manager

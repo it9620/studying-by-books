@@ -44,4 +44,32 @@ docker volume inspect example-volume
 sudo cat /var/lib/docker/volumes/example-volume/_data/data-file.txt
 ```
 
+## Deocker networks
+
+```sh
+docker network ls
+
+# Bridge network:
+docker run --rm -p 8080:80 --name nginx-compose nginx
+
+docker inspect --format '{{json .NetworkSettings.Networks}}' nginx-compose
+
+docker network ls --filter ID=$NETWORK_ID
+
+# Host network:
+docker run --rm --network host --name host-nginx nginx
+
+docker run -it --rm --network host --name nginx-wget bash
+# wget -O- localhost:80
+# exit
+
+# Overlay network
+```
+
+## Determine networks in compose
+
+```sh
+docker network ls --filter name=chapter2_default
+```
+
 ---
