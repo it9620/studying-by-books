@@ -1,0 +1,10 @@
+services:
+  task-manager:
+    extends:
+      file: ./task-manager/docker-compose.yaml
+      service: task-manager
+    environment:
+      - HTTP_PROXY=hoverfly:8500
+      #- HTTP_PROXY=hoverfly:8888
+    depends_on:
+      - hoverfly

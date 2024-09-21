@@ -1,0 +1,11 @@
+services:
+  event-service:
+    extends:
+      file: ./events-service/docker-compose.yaml
+      service: event-service
+    environment:
+      - HTTP_PROXY=hoverfly:8500
+      #- HTTP_PROXY=hoverfly:8888
+    depends_on:
+      - hoverfly
+  

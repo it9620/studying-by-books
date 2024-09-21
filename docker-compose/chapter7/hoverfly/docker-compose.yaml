@@ -1,0 +1,11 @@
+services:
+  hoverfly:
+    image: spectolabs/hoverfly
+    ports: 
+      - 8888:8888
+      #- :8888
+    networks:
+      - location-network
+      - monitoring-network
+    entrypoint: ["hoverfly","-capture","-listen-on-host","0.0.0.0"]
+    #entrypoint: ["hoverfly","-capture","0.0.0.0"]
