@@ -52,6 +52,23 @@ docker compose -f base-compose.yaml \
     -f events-service/docker-compose.yaml \
     -f monitoring/mock-push-gateway.yaml \
     up
+
+# run without monitoring
+docker compose -f base-compose.yaml \
+    -f monitoring/mock-push-gateway.yaml \
+    -f events-service/docker-compose.yaml \
+    -f location-service/docker-compose.yaml \
+    -f task-manager/docker-compose.yaml \
+    up
+```
+
+## Using Config command
+
+```sh
+# create configuration for only location service:
+docker compose -f base-compose.yaml \
+    -f location-service/docker-compose.yaml \
+    config > location-service-testing-compose.yaml
 ```
 
 ---
