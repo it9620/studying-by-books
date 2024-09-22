@@ -1,10 +1,8 @@
 services:
   newsletter-lambda:
+    platform: linux/amd64
     build: 
       context: ./newsletter-lambda/
-    
-    platform: linux/arm64
-
     image: newsletter_lambda
     ports:
      - 8080:8080

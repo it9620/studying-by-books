@@ -1,7 +1,8 @@
-# FROM amazon/aws-lambda-go:latest as build
+# # syntax=docker/dockerfile:1
 
-# RUN yum install -y golang
-# RUN go env -w GOPROXY=direct
+# FROM golang:1.23-alpine
+
+# WORKDIR /app
 
 # COPY go.mod ./
 # COPY go.sum ./
@@ -12,10 +13,8 @@
 
 # RUN go build -o /main
 
-# FROM amazon/aws-lambda-go:latest
-# COPY --from=build /main /var/task/main
+# CMD [ "/main" ]
 
-# CMD [ "main" ]
 
 # Build Stage
 FROM golang:1.23 AS builder
@@ -41,7 +40,8 @@ RUN go build -o main .
 FROM amazon/aws-lambda-go:latest
 
 # Copy the built binary from the builder stage
-COPY --from=builder /app/main /var/task/main
+COPY --from=builder /app/main /main
+# COPY --from=build /main /var/task/main
 
 # Command to run the Lambda function
 CMD [ "main" ]

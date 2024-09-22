@@ -8,4 +8,6 @@ aws dynamodb create-table \
         AttributeName=email,KeyType=HASH \
     --provisioned-throughput \
         ReadCapacityUnits=5,WriteCapacityUnits=5 \
+    # --table-class STANDARD --endpoint-url http://localhost:8000
     --table-class STANDARD --endpoint-url http://dynamodb:8000
+    # --table-class STANDARD --endpoint-url http://dynamodb:8001

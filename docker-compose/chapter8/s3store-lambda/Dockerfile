@@ -2,6 +2,7 @@
 
 # RUN yum install -y golang
 # RUN go env -w GOPROXY=direct
+# # cache dependencies
 
 # COPY go.mod ./
 # COPY go.sum ./
@@ -16,6 +17,7 @@
 # COPY --from=build /main /var/task/main
 
 # CMD [ "main" ]
+
 
 # Build Stage
 FROM golang:1.23 AS builder
@@ -41,7 +43,7 @@ RUN go build -o main .
 FROM amazon/aws-lambda-go:latest
 
 # Copy the built binary from the builder stage
-COPY --from=builder /app/main /var/task/main
+COPY --from=build /main /var/task/main
 
 # Command to run the Lambda function
 CMD [ "main" ]
