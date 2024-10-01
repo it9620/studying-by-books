@@ -4,7 +4,6 @@
         "conan": {}
     },
     "include": [
-        "/Users/maymac2/dev/studing-by-books/the-definitive-antlr4-reference/chapter3/tmp/array/cpp/build/Release/generators/CMakePresets.json",
-        "/Users/maymac2/dev/studing-by-books/the-definitive-antlr4-reference/chapter3/tmp/array/cpp/build/Debug/generators/CMakePresets.json"
+        "/Users/maymac2/dev/studing-by-books/the-definitive-antlr4-reference/chapter3/array/cpp/build/Debug/generators/CMakePresets.json"
     ]
 }

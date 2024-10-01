@@ -11,10 +11,10 @@ using namespace antlr4;
 
 int main(int argc, const char* argv[]) {
     
-    std::string input_str = "{1,2,3}";
+    // std::string input_str = "{1,2,3}";
+    // ANTLRInputStream input(input_str);
     
-    // ANTLRInputStream input(std::cin);
-    ANTLRInputStream input(input_str);
+    ANTLRInputStream input(std::cin);
 
     ArrayInitLexer lexer(&input);
 
@@ -22,7 +22,7 @@ int main(int argc, const char* argv[]) {
 
     ArrayInitParser parser(&tokens);
 
-    std::unique_ptr<tree::ParseTree> tree (parser.init());
+    tree::ParseTree *tree = parser.init();
 
     std::cout << tree->toStringTree(&parser) << std::endl;    
 

@@ -16,6 +16,7 @@ hs_err_pid*
 ## Cpp
 ##############################
 build
+*/CMakeUserPresets.json
 ##############################
 ## Visual Studio Code
 ##############################
