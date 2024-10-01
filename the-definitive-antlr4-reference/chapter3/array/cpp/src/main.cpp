@@ -4,6 +4,7 @@
 #include "antlr4-runtime.h"
 #include "ArrayInitLexer.h"
 #include "ArrayInitParser.h"
+#include "ShortToUnicodeString.h"
 
 // =================================================================================================
 
@@ -24,7 +25,13 @@ int main(int argc, const char* argv[]) {
 
     tree::ParseTree *tree = parser.init();
 
-    std::cout << tree->toStringTree(&parser) << std::endl;    
+    // std::cout << tree->toStringTree(&parser) << std::endl;
+
+    tree::ParseTreeWalker walker;
+
+    ArrayInitBaseListener::ParseTreeListener* listener = new ShortToUnicodeString();
+
+    walker.walk(listener, tree);
 
     return 0;
 }
