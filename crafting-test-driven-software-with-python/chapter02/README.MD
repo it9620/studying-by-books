@@ -22,4 +22,9 @@ python3 04_chat_spies.py TestChatAcceptance
 python3 05_chat_fakes.py TestConnection
 ```
 
+```sh
+python3 06_acceptance_tests.py TestChatAcceptance
+python3 06_acceptance_tests.py TestChatClient
+```
+
 ---
