@@ -27,4 +27,15 @@ python3 06_acceptance_tests.py TestChatAcceptance
 python3 06_acceptance_tests.py TestChatClient
 ```
 
+```sh
+python3 07_dependency_injection.py TestChatClient
+python3 07_dependency_injection.py TestChatAcceptance
+```
+
+```sh
+pip install pinject
+
+python3 08_pinject.py
+```
+
 ---
